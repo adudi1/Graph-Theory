@@ -1,7 +1,7 @@
 # Graph-Theory
 Learnings and practice
 
-# DFS 
+## DFS 
 ```
 // class scope variables 
 n - number of nodes
@@ -20,7 +20,7 @@ visited[] // size n, initialized with false
     }
 ```
 
-# connected components
+## connected components
 ```
 // class scope variables 
 n - number of nodes
@@ -50,6 +50,7 @@ int[] coloring;
         }
     }
 ```
+
 
 
 
