@@ -20,7 +20,7 @@ visited[] // size n, initialized with false
     }
 ```
 
-## connected components
+## Connected components
 ```
 // class scope variables 
 n - number of nodes
@@ -50,6 +50,47 @@ int[] coloring;
         }
     }
 ```
+
+## BFS
+Good for searching path in unweighted graph
+```
+    boolean[] visited;
+    Integer[] path;
+    public List<Integer> findPath(List<List<Integer>> g, int source, int destination) {
+        visited = new boolean[g.size()];
+        path = new Integer[g.size()];
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(source);
+        visited[source] = true;
+
+        while (!queue.isEmpty()) {
+            int currNode = queue.poll();
+            List<Integer> neighbours = g.get(currNode);
+            for (int next : neighbours) {
+                if (!visited[next]) {
+                    path[next] = currNode;
+                    queue.add(next);
+                    visited[next] = true;
+                    if (next == destination) {
+                        queue.clear();
+                        break;
+                    }
+                }
+            }
+        }
+        return reconstructPath(path, source, destination);
+    }
+
+    private List<Integer> reconstructPath(Integer[] path, Integer source, Integer destination) {
+        List<Integer> result = new LinkedList<>();
+        while (destination != null) {
+            result.add(0, destination);
+            destination = path[destination];
+        }
+        if (result.get(0) == source) return result;
+        return Arrays.asList();
+    }
+    ```
 
 
 
